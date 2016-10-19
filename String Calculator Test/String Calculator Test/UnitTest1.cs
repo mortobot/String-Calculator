@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace String_Calculator_Test
@@ -41,18 +42,16 @@ namespace String_Calculator_Test
 
         public int CalculateString(string numberString)
         {
-            var acceptableNumbers = new string[1, 2];
-            ;
+            var acceptableNumbers = new Dictionary<string, int>();
+            acceptableNumbers.Add("1",1);
+            acceptableNumbers.Add("2",2);
 
-            if (numberString == "1")
-            {
-                return 1;
-            }
-            if (numberString == "2")
-            {
-                return 2;
-            }
-            return 0;
+            int value;
+
+            acceptableNumbers.TryGetValue(numberString, out value);
+
+            return value;
+
         }
     }
 
